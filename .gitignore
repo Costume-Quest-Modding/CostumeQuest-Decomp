@@ -1,10 +1,9 @@
-/.vscode
+.cache
+.clangd
+compile_commands.json
 
-/steamworks_sdk_114
-/steam_appid.txt
+steamapp_id.txt
 
-/costume_quest
-
-/*.dmp
-
-/build
+.xmake
+build
+external
