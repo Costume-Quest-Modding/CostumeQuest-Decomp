@@ -11,7 +11,7 @@ This is a functionally matching decompilation of Costume Quest. This repository 
 - **MD5 Checksum:** `6F739759617989691663F9273E72C969 Cq.exe`
 
 ## Dependencies
-- **Steamworks API:** v1.14
+- **Steamworks API:** v1.14 (`extern/steamworks_sdk_114`)
 
 ## Building
 ```
