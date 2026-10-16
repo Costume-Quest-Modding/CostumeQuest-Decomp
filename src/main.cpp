@@ -1,16 +1,15 @@
 #include <windows.h>
 
 #include <cstdint>
-#include <new>
 
 #include <steam/steam_api.h>
 
 #include "allocator.hpp"
 #include "steam_achievements.hpp"
 
-bool G_steam_init = false;
-ISteamRemoteStorage* G_steam_storage = NULL;
-CSteamAchievements* G_steam_achievements = NULL;
+bool G_steam_init = false; // 0x00a8f860
+ISteamRemoteStorage* G_steam_storage = NULL; // 0x00a8f86c
+CSteamAchievements* G_steam_achievements = NULL; // 0x00a8f868
 
 // 0x00402180
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
@@ -18,20 +17,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     if ((!needs_restart) && (G_steam_init = SteamAPI_Init(), G_steam_init)) {
         G_steam_storage = SteamRemoteStorage();
 
-        // TODO:
-        // FUN_00711c20();
-
-        void* steam_achievements_mem = tracked_malloc(sizeof(CSteamAchievements), 0x10, ALLOCTAG_3);
-        if (steam_achievements_mem == NULL) {
-            // TODO:
-            // if (DAT_00a8ff38 != (code *)0x0) {
-            //     (*DAT_00a8ff38)();
-            // }
-            G_steam_achievements = NULL;
-        }
-        else {
-            G_steam_achievements = new (steam_achievements_mem) CSteamAchievements();
-        }
+        G_steam_achievements = new(ALLOCTAG_3) CSteamAchievements();
 
         int32_t total_bytes, available_bytes;
 
@@ -41,7 +27,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         ISteamApps* steam_apps = SteamApps();
         if (steam_apps->BIsSubscribed()) {
             // TODO:
-            // G_seed_app = new (ALLOCTAG_4) SeedApp();
+            // G_seed_app = new(ALLOCTAG_4) SeedApp();
             // if (G_seed_app) {
             //     G_seed_app->ParseCommandLine();
 
@@ -52,10 +38,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             SteamAPI_Shutdown();
 
             if (G_steam_achievements != NULL) {
-                G_steam_achievements->~CSteamAchievements();
-                // TODO:
-                // FUN_00711c20();
-                tracked_free(G_steam_achievements);
+                delete G_steam_achievements;
             }
         }
     }

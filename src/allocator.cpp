@@ -21,7 +21,15 @@ struct AllocHeader {
     uint8_t tag;
 };
 
-static AllocTagStats alloc_tag_table[ALLOCTAG_MAX];
+static AllocTagStats alloc_tag_table[ALLOCTAG_MAX]; // 0x009f3e28
+
+void (*G_alloc_failure_handler)() = NULL; // 0x00a8ff38
+
+// 0x00711c20
+void* allocator_noop() {
+    static int object = 0;
+    return &object;
+}
 
 // 0x00711a60
 void* tracked_malloc(size_t size, size_t align, AllocTag tag) {
@@ -89,4 +97,25 @@ void* tracked_virtual_alloc_top_down(size_t size, AllocTag tag) {
 // 0x00716f30
 void tracked_virtual_free(void* ptr, size_t size, AllocTag tag) {
     assert(false && "tracked_virtual_free UNIMPLEMENTED");
+}
+
+// 0x0070b020
+void* operator new(size_t size, AllocTag tag) noexcept {
+    allocator_noop();
+    void* memory = tracked_malloc(size, 16, tag);
+    
+    if (memory == NULL && G_alloc_failure_handler != NULL) {
+        G_alloc_failure_handler();
+    }
+
+    return memory;
+}
+
+// 0x0070b050
+void operator delete(void* ptr) noexcept {
+    allocator_noop();
+    
+    if (ptr != NULL) {
+        tracked_free(ptr);
+    }
 }

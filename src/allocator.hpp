@@ -72,6 +72,8 @@ enum AllocTag : uint32_t {
     ALLOCTAG_MAX
 };
 
+void* allocator_noop();
+
 void* tracked_malloc(size_t size, size_t align, AllocTag tag);
 void tracked_free(void* ptr);
 
@@ -79,5 +81,11 @@ void* tracked_virtual_alloc(size_t size, AllocTag tag);
 void* tracked_virtual_alloc_top_down(size_t size, AllocTag tag);
 
 void tracked_virtual_free(void* ptr, size_t size, AllocTag tag);
+
+extern void (*G_alloc_failure_handler)();
+
+void* operator new(size_t size, AllocTag tag) noexcept;
+
+void operator delete(void* ptr) noexcept;
 
 #endif

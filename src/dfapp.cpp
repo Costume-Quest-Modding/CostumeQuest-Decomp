@@ -21,6 +21,7 @@ DFApp::DFApp(uint32_t param_2, uint32_t width, uint32_t height) {
     this->win_height = height;
     this->unk8_0x28 = true;
     this->unk9_0x29 = true;
+    this->unk10_0x2c = 0.05f;
     this->width_2 = width;
     this->height_2 = height;
     this->unk13_0x38 = param_2;
@@ -31,7 +32,6 @@ DFApp::DFApp(uint32_t param_2, uint32_t width, uint32_t height) {
     }
 }
 
-// TODO:
 DFApp::~DFApp() {
 
 }
