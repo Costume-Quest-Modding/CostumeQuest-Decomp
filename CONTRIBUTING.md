@@ -18,7 +18,7 @@
     ```
 3. Configure and build. If you are on Linux then you should install [msvc-wine](https://github.com/mstorsjo/msvc-wine) and set the `MSVC_WINE` environment variable to the install path.
     ```
-    xmake -f -c -p windows -m [debug|release]
+    xmake f -p windows -m [debug|release]
     xmake run Cq
     ```
 

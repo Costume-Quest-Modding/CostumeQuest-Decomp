@@ -4,7 +4,7 @@ set_project("Cq-Decomp")
 set_arch("x86")
 set_languages("c++17")
 
-add_rules("plugin.compile_commands.autoupdate", { outputdir = "." })
+add_rules("plugin.compile_commands.autoupdate", { outputdir = ".", lsp = "clangd" })
 
 local msvc_wine = os.getenv("MSVC_WINE")
 
@@ -34,4 +34,5 @@ target("Cq")
 
     after_build(function (target)
         io.writefile(path.join(target:targetdir(), "steam_appid.txt"), "115100")
+        os.cp("external/steamworks_sdk_114/redistributable_bin/steam_api.dll", target:targetdir())
     end)
