@@ -38,9 +38,8 @@ DFApp::~DFApp() {
 
 }
 
-uint32_t DFApp::FUN_10() {
-    assert(false && "DFApp::FUN_10 UNIMPLEMENTED");
-    return 0;
+bool DFApp::FUN_10(uint32_t param_2) {
+    return false;
 }
 
 void DFApp::FUN_14() {

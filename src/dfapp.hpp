@@ -38,9 +38,9 @@ public:
 
     virtual uint32_t FUN_04() = 0;
     virtual void FUN_08() = 0;
-    virtual void FUN_0C(uint32_t param_1) = 0;
+    virtual void FUN_0C(uint32_t param_2) = 0;
 
-    virtual uint32_t FUN_10();
+    virtual bool FUN_10(uint32_t param_2);
     virtual void FUN_14();
     virtual void FUN_18();
     virtual void FUN_1C();
