@@ -2,9 +2,33 @@
 
 #include <cstring>
 
-// TODO: Decompile this
+// TODO: Move this somewhere else.
 // 0x0070c2f0
-void* ArrayResize(AllocTag tag, bool free_old, void* data, size_t element_size, size_t old_cap, size_t new_cap);
+void* ArrayResize(AllocTag tag, bool free_old, void* data, size_t element_size, size_t old_cap, size_t new_cap) {
+    void* new_data = NULL;
+
+    if (new_cap != 0) {
+        allocator_noop();
+        new_data = tracked_malloc(element_size * new_cap, 0x10, tag);
+        
+        if (new_data == NULL && G_alloc_failure_handler != NULL) {
+            G_alloc_failure_handler();
+        }
+        
+        if (old_cap <= new_cap) {
+            new_cap = old_cap;
+        }
+
+        memcpy(new_data, data, new_cap * element_size);
+    }
+
+    if (free_old && data != NULL) {
+        allocator_noop();
+        tracked_free(data);
+    }
+
+    return new_data;
+}
 
 String::String(AllocTag tag)
     : tag(tag), length(0), capacity(0), unk_bit(0), not_owned(0), data(nullptr)
