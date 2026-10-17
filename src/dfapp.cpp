@@ -11,6 +11,7 @@ enum DisplayFlags : uint32_t {
     DISPLAY_SSAA4x          = (1 << 8),
 };
 
+// 0x007192a0
 DFApp::DFApp(uint32_t param_2, uint32_t width, uint32_t height) {
     this->unk5_0x14 = 0;
     this->unk6_0x18 = 0;
@@ -32,6 +33,7 @@ DFApp::DFApp(uint32_t param_2, uint32_t width, uint32_t height) {
     }
 }
 
+// 0x0098a940
 DFApp::~DFApp() {
 
 }
@@ -65,8 +67,9 @@ void DFApp::FUN_28() {
     assert(false && "DFApp::FUN_28 UNIMPLEMENTED");
 }
 
+// 0x0071aad0
 void DFApp::CloseWindow() {
-    assert(false && "DFApp::CloseWindow UNIMPLEMENTED");
+    SendMessageA(this->windows[0].hwnd, WM_CLOSE, 0, 0);
 }
 
 uint32_t DFApp::FUN_30() {
