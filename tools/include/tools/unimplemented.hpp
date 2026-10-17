@@ -1,9 +1,8 @@
-#ifndef HPP_CQ_UNIMPLEMENTED
-#define HPP_CQ_UNIMPLEMENTED
+// SPDX-License-Identifier: BSD-2-Clause
+// Copyright (c) 2026 Costume-Quest-Modding
 
-// NOTE: This is not part of the decomp code.
-// This header exists to abort on a function
-// that does not have an implementation.
+#ifndef HPP_TOOLS_UNIMPLEMENTED
+#define HPP_TOOLS_UNIMPLEMENTED
 
 #include <cstdio>
 #include <intrin.h>

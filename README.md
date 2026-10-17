@@ -1,9 +1,9 @@
 # Costume Quest Decomp
 
 > [!IMPORTANT]
-> This project is an independent open-source effort and is **not** associated, authorised, endorsed by, or in any way officially connected with **Double Fine Productions** or **Costume Quest**.
+> This project is an independent reverse-engineering effort and is **not** associated with, authorised by, endorsed by, or in any way officially connected with **Double Fine Productions** or **Costume Quest**. All rights, titles, and copyrights to **Costume Quest** and its underlying game logic belong exclusively to **Double Fine Productions**.
 
-This is a functionally matching decompilation of Costume Quest. This repository only includes source code and does not include game assets or external dependencies.
+This is a functionally matching decompilation of Costume Quest. This repository only includes source code and does not include game assets or external dependencies. A legally obtained copy of Costume Quest is required to use this decomp.
 
 ## Target
 - **Platform:** Windows x86 (32-bit)
@@ -12,3 +12,8 @@ This is a functionally matching decompilation of Costume Quest. This repository 
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contributing and building instructions.
+
+## License
+The code in `/src` is derived from Costume Quest, it has no license and all rights remain with the original rights holders.
+
+All other files are released under the [BSD 2-Clause License](LICENSE) where they carry a notice header.

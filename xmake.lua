@@ -1,3 +1,6 @@
+-- SPDX-License-Identifier: BSD-2-Clause
+-- Copyright (c) 2026 Costume-Quest-Modding
+
 add_rules("mode.debug", "mode.release")
 
 set_project("Cq-Decomp")
@@ -21,7 +24,9 @@ end
 
 target("Cq")
     set_kind("binary")
+    
     add_files("src/**.cpp")
+    add_includedirs("tools/include")
 
     add_links("kernel32", "user32", "shell32", "gdi32")
 
