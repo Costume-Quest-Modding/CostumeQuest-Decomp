@@ -2,7 +2,8 @@
 
 #include <cstring>
 
-// TODO: Move this somewhere else.
+// NOTE: Not sure if the function belongs here.
+// I haven't checked its usage elsewhere.
 // 0x0070c2f0
 void* ArrayResize(AllocTag tag, bool free_old, void* data, size_t element_size, size_t old_cap, size_t new_cap) {
     void* new_data = NULL;
@@ -30,12 +31,16 @@ void* ArrayResize(AllocTag tag, bool free_old, void* data, size_t element_size, 
     return new_data;
 }
 
+// UNSURE: Inferred from DFApp::ParseCommandLine's inlined constructor of String.
+// NOTE: No known address.
 String::String(AllocTag tag)
     : tag(tag), length(0), capacity(0), unk_bit(0), not_owned(0), data(nullptr)
 {
 
 }
 
+// UNSURE: Inferred from DFApp::ParseCommandLine's inlined destructor of String.
+// NOTE: No known address.
 String::~String() {
     this->FUN_004332b0(0);
 }
@@ -81,6 +86,7 @@ void String::FUN_0050be00(uint32_t new_size, bool force_realloc) {
         }
 
         if (new_size < 0x20) {
+            // TODO: Decompile function
             // new_cap = FUN_006bf500(new_size);
         }
         else {

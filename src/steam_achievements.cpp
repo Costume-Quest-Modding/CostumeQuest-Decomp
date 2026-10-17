@@ -1,6 +1,6 @@
 #include "steam_achievements.hpp"
 
-#include <cassert>
+#include "unimplemented.hpp"
 
 // 0x00401b80
 CSteamAchievements::CSteamAchievements()
@@ -29,19 +29,20 @@ CSteamAchievements::~CSteamAchievements() {
 
 }
 
-// TODO: Update function signatures in ghidra.
-
+// TODO: Decompile
 // 0x00401c60
 void CSteamAchievements::OnUserStatsReceived(UserStatsReceived_t* stats) {
-    assert(false && "CSteamAchievements::OnUserStatsReceived UNIMPLEMENTED");
+    UNIMPLEMENTED();
 }
 
+// TODO: Decompile
 // 0x00401d90
 void CSteamAchievements::OnUserStatsStored(UserStatsStored_t* stats) {
-    assert(false && "CSteamAchievements::OnUserStatsStored UNIMPLEMENTED");
+    UNIMPLEMENTED();
 }
 
+// TODO: Decompile
 // 0x00401df0
 void CSteamAchievements::OnUserAchievementStored(UserAchievementStored_t* achievment) {
-    assert(false && "CSteamAchievements::OnUserAchievementStored UNIMPLEMENTED");
+    UNIMPLEMENTED();
 }

@@ -1,9 +1,10 @@
 #include "allocator.hpp"
 
 #include <cstdlib>
-#include <cassert>
 
 #include <windows.h>
+
+#include "unimplemented.hpp"
 
 struct AllocTagStats {
     size_t unk1_0x0;
@@ -84,19 +85,22 @@ void tracked_free(void* ptr) {
 
 // 0x00716e50
 void* tracked_virtual_alloc(size_t size, AllocTag tag) {
-    assert(false && "tracked_virtual_alloc UNIMPLEMENTED");
+    // TODO: Decompile
+    UNIMPLEMENTED();
     return NULL;
 }
 
 // 0x00716ec0
 void* tracked_virtual_alloc_top_down(size_t size, AllocTag tag) {
-    assert(false && "tracked_virtual_alloc_top_down UNIMPLEMENTED");
+    // TODO: Decompile
+    UNIMPLEMENTED();
     return NULL;
 }
 
 // 0x00716f30
 void tracked_virtual_free(void* ptr, size_t size, AllocTag tag) {
-    assert(false && "tracked_virtual_free UNIMPLEMENTED");
+    // TODO: Decompile
+    UNIMPLEMENTED();
 }
 
 // 0x0070b020

@@ -1,8 +1,8 @@
 #include "dfapp.hpp"
 
-#include <cassert>
-
 #include "string.hpp"
+
+#include "unimplemented.hpp"
 
 enum DisplayFlags : uint32_t {
     DISPLAY_SYNCFRAMERATE   = (1 << 0),
@@ -40,32 +40,38 @@ DFApp::~DFApp() {
 
 }
 
+// 0x00496870
 bool DFApp::FUN_10(uint32_t param_2) {
     return false;
 }
 
+// NOTE: FUN_14 to FUN_28 are all no-ops.
+// The compiler folded them into a single
+// function at 0x004ea700. They have no
+// addresses of their own.
+
 void DFApp::FUN_14() {
-    assert(false && "DFApp::FUN_14 UNIMPLEMENTED");
+
 }
 
 void DFApp::FUN_18() {
-    assert(false && "DFApp::FUN_18 UNIMPLEMENTED");
+
 }
 
 void DFApp::FUN_1C() {
-    assert(false && "DFApp::FUN_1C UNIMPLEMENTED");
+
 }
 
 void DFApp::FUN_20() {
-    assert(false && "DFApp::FUN_20 UNIMPLEMENTED");
+
 }
 
 void DFApp::FUN_24() {
-    assert(false && "DFApp::FUN_24 UNIMPLEMENTED");
+
 }
 
 void DFApp::FUN_28() {
-    assert(false && "DFApp::FUN_28 UNIMPLEMENTED");
+
 }
 
 // 0x0071aad0
@@ -73,8 +79,10 @@ void DFApp::CloseWindow() {
     SendMessageA(this->windows[0].hwnd, WM_CLOSE, 0, 0);
 }
 
+// 0x0055f540
 uint32_t DFApp::FUN_30() {
-    assert(false && "DFApp::FUN_30 UNIMPLEMENTED");
+    // TODO: Decompile
+    UNIMPLEMENTED();
     return 0;
 }
 
@@ -83,7 +91,7 @@ void DFApp::ParseCommandLine() {
     char delimiter[2] = { ' ', '\0' };
     LPSTR cmdline = GetCommandLineA();
 
-    // TODO: Not 100% on the string implementation
+    // UNSURE: Not 100% on the string implementation
     // but everything else is fine. Come back after
     // having another look at string.
     String string(ALLOCTAG_46);
