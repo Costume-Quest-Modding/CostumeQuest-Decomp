@@ -2,6 +2,8 @@
 
 #include <cassert>
 
+#include "string.hpp"
+
 enum DisplayFlags : uint32_t {
     DISPLAY_SYNCFRAMERATE   = (1 << 0),
     DISPLAY_BIT1            = (1 << 1),
@@ -76,6 +78,66 @@ uint32_t DFApp::FUN_30() {
     return 0;
 }
 
+// 0x00719380
 void DFApp::ParseCommandLine() {
-    assert(false && "DFApp::ParseCommandLine UNIMPLEMENTED");
+    char delimiter[2] = { ' ', '\0' };
+    LPSTR cmdline = GetCommandLineA();
+
+    // TODO: Not 100% on the string implementation
+    // but everything else is fine. Come back after
+    // having another look at string.
+    String string(ALLOCTAG_46);
+    string.Assign(cmdline);
+
+    char* token;
+    char buffer[1024];
+
+    uint32_t length = string.length;
+    if (length == 0 || (int)(length - 1) < 1) {
+        token = (char*)"";
+    }
+    else {
+        token = string.data;
+        if (string.data == NULL) {
+            return;
+        }
+    }
+
+    strncpy(buffer, token, 1024);
+    token = strtok(buffer, delimiter);
+
+    while (token != NULL) {
+        if (strcmp(token, "-width") == 0) {
+            token = strtok(NULL, delimiter);
+            if (token != NULL) {
+                this->win_width = atoi(token);
+            }
+        }
+        else if (strcmp(token, "-height") == 0) {
+            if (token != NULL) {
+                token = strtok(NULL, delimiter);
+                this->win_height = atoi(token);
+            }
+        }
+        else if (strcmp(token, "-fullscreen") == 0) {
+            this->display_flags |= DISPLAY_FULLSCREEN;
+        }
+        else if (strcmp(token, "-window") == 0) {
+            this->display_flags &= ~DISPLAY_FULLSCREEN;
+        }
+        else if (strcmp(token, "-syncframerate") == 0) {
+            this->display_flags |= DISPLAY_SYNCFRAMERATE;
+        }
+        else if (strcmp(token, "-novsync") == 0) {
+            this->display_flags &= ~DISPLAY_SYNCFRAMERATE;
+        }
+        else if (strcmp(token, "-ssaa2x") == 0) {
+            this->display_flags |= DISPLAY_SSAA2x;
+        }
+        else if (strcmp(token, "-ssaa4x") == 0) {
+            this->display_flags |= DISPLAY_SSAA4x;
+        }
+
+        token = strtok(NULL, delimiter);
+    }
 }
