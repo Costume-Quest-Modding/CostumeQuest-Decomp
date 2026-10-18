@@ -26,7 +26,7 @@ target("Cq")
     set_kind("binary")
     
     add_files("src/**.cpp")
-    add_includedirs("tools/include")
+    add_includedirs("src", "tools/include")
 
     add_links("kernel32", "user32", "shell32", "gdi32", "ole32")
 
