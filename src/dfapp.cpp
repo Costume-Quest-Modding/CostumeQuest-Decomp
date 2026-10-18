@@ -80,7 +80,7 @@ void DFApp::CloseWindow() {
 }
 
 // 0x0055f540
-uint32_t DFApp::FUN_30() {
+bool DFApp::FUN_30(uint32_t param_2, uint32_t param_3, uint32_t param_4, uint32_t param_5, uint32_t param_6, uint32_t param_7) {
     // TODO: Decompile
     UNIMPLEMENTED();
     return 0;

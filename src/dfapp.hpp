@@ -48,7 +48,7 @@ public:
     virtual void FUN_24();
     virtual void FUN_28();
     virtual void CloseWindow();
-    virtual uint32_t FUN_30();
+    virtual bool FUN_30(uint32_t param_2, uint32_t param_3, uint32_t param_4, uint32_t param_5, uint32_t param_6, uint32_t param_7);
     virtual void ParseCommandLine();
 };
 
