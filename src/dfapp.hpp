@@ -12,7 +12,7 @@
 struct WindowStruct {
     HWND hwnd;
     HINSTANCE hinstance;
-    HICON hicon;
+    HICON icon;
     uint32_t unk4_0xc;
     uint32_t unk5_0x10;
     uint32_t unk6_0x14;
@@ -53,6 +53,8 @@ public:
     virtual void CloseWindow();
     virtual bool FUN_30(uint32_t param_2, uint32_t param_3, uint32_t param_4, uint32_t param_5, uint32_t param_6, uint32_t param_7);
     virtual void ParseCommandLine();
+
+    bool FUN_0071a030();
 };
 
 #endif
