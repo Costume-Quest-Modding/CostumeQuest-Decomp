@@ -27,12 +27,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         ISteamApps* steam_apps = SteamApps();
         if (steam_apps->BIsSubscribed()) {
             // TODO: SeedApp is not implemented yet
+            // NOTE: SeedApp has an overwritten delete operator.
             // G_seed_app = new(ALLOCTAG_4) SeedApp();
             // if (G_seed_app) {
             //     G_seed_app->ParseCommandLine();
-
-            //     FUN_00719310(G_seed_app);
-
+            //     FUN_00719310();
+            //     delete G_seed_app;
             // }
 
             SteamAPI_Shutdown();

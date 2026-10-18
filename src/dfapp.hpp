@@ -13,6 +13,9 @@ struct WindowStruct {
     HWND hwnd;
     HINSTANCE hinstance;
     HICON hicon;
+    uint32_t unk4_0xc;
+    uint32_t unk5_0x10;
+    uint32_t unk6_0x14;
 };
 
 class DFApp {
@@ -20,7 +23,7 @@ public:
     uint32_t unk1_0x4;
     bool unk2_0x8;
     const char* title;
-    WindowStruct* windows;  // WindowStruct[2] heap allocated.
+    WindowStruct* window;
     uint32_t unk5_0x14;
     uint64_t unk6_0x18;
     uint32_t win_width;

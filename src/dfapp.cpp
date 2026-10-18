@@ -19,7 +19,7 @@ DFApp::DFApp(uint32_t param_2, uint32_t width, uint32_t height) {
     this->unk6_0x18 = 0;
     this->unk2_0x8 = false;
     this->title = "CostumeQuest";
-    this->windows = NULL;
+    this->window = NULL;
     this->win_width = width;
     this->win_height = height;
     this->unk8_0x28 = true;
@@ -76,7 +76,7 @@ void DFApp::FUN_28() {
 
 // 0x0071aad0
 void DFApp::CloseWindow() {
-    SendMessageA(this->windows[0].hwnd, WM_CLOSE, 0, 0);
+    SendMessageA(this->window->hwnd, WM_CLOSE, 0, 0);
 }
 
 // 0x0055f540
