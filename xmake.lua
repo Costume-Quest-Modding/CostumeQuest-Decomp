@@ -28,7 +28,7 @@ target("Cq")
     add_files("src/**.cpp")
     add_includedirs("tools/include")
 
-    add_links("kernel32", "user32", "shell32", "gdi32")
+    add_links("kernel32", "user32", "shell32", "gdi32", "ole32")
 
     add_includedirs("external/steamworks_sdk_114/public")
     add_linkdirs("external/steamworks_sdk_114/redistributable_bin")
