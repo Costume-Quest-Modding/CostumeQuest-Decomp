@@ -2,8 +2,7 @@
 .clangd
 compile_commands.json
 
-steamapp_id.txt
-
 .xmake
 build
-external
+
+external/steamworks_sdk_114

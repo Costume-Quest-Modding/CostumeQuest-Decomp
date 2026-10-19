@@ -34,6 +34,10 @@ target("Cq")
     add_linkdirs("external/steamworks_sdk_114/redistributable_bin")
     add_links("steam_api")
 
+    add_includedirs("external/lua_51/include")
+    add_linkdirs("external/lua_512")
+    add_links("lua_512")
+
     add_defines("_CRT_SECURE_NO_WARNINGS")
     add_ldflags("/SUBSYSTEM:WINDOWS", {force = true})
 

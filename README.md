@@ -19,4 +19,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for contributing and building instruction
 ## License
 The code in `/src` is derived from Costume Quest, it has no license and all rights remain with the original rights holders.
 
+Subfolders inside `/external` have their own licenses to follow.
+
 All other files are released under the [BSD 2-Clause License](LICENSE) where they carry a notice header.
