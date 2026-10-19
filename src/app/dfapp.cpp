@@ -45,7 +45,7 @@ DFApp::~DFApp() {
 }
 
 // 0x00496870
-bool DFApp::FUN_10(uint32_t param_2) {
+bool DFApp::FUN_10(float param_2) {
     return false;
 }
 
@@ -251,4 +251,27 @@ bool DFApp::FUN_0071a030() {
     }
 
     return false;
+}
+
+// 0x0071aa60
+void DFApp::MessagePump() {
+    MSG msg;
+
+    // TODO: BOOL_009f3750, check references
+    // and decide where it goes.
+    // if (BOOL_009f3750) {
+        while (PeekMessageA(&msg, NULL, 0, 0, 1) != 0) {
+            if (msg.message == WM_QUIT) {
+                // BOOL_009f3750 = false;
+                return;
+            }
+
+            TranslateMessage(&msg);
+            DispatchMessageA(&msg);
+
+            // if (BOOL_009f2750 == false) {
+            //     return;
+            // }
+        }
+    // }
 }

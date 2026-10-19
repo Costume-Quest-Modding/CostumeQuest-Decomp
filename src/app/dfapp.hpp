@@ -41,9 +41,9 @@ public:
 
     virtual uint32_t FUN_04() = 0;
     virtual void FUN_08() = 0;
-    virtual void FUN_0C(uint32_t param_2) = 0;
+    virtual void FUN_0C(float param_2) = 0;
 
-    virtual bool FUN_10(uint32_t param_2);
+    virtual bool FUN_10(float param_2);
     virtual void FUN_14();
     virtual void FUN_18();
     virtual void FUN_1C();
@@ -54,7 +54,11 @@ public:
     virtual bool FUN_30(uint32_t param_2, uint32_t param_3, uint32_t param_4, uint32_t param_5, uint32_t param_6, uint32_t param_7);
     virtual void ParseCommandLine();
 
-    bool FUN_0071a030();
+    bool FUN_0071a030(); // NOTE: Looks like init window
+    void FUN_0071a800(); // NOTE: Looks like Run
+
+    static void MessagePump(); // NOTE: Only static here because it is close to other DFApp functions
+    // static LRESULT WINAPI WindowProc();
 };
 
 #endif
